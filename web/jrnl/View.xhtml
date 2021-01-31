@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewJrnlTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewJrnlLabel_id}"/>
+                    <h:outputText value="#{jrnlController.selected.id}" title="#{bundle.ViewJrnlTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewJrnlLabel_idDoctor}"/>
+                    <h:outputText value="#{jrnlController.selected.idDoctor}" title="#{bundle.ViewJrnlTitle_idDoctor}"/>
+                    <h:outputText value="#{bundle.ViewJrnlLabel_idClient}"/>
+                    <h:outputText value="#{jrnlController.selected.idClient}" title="#{bundle.ViewJrnlTitle_idClient}"/>
+                    <h:outputText value="#{bundle.ViewJrnlLabel_dt}"/>
+                    <h:outputText value="#{jrnlController.selected.dt}" title="#{bundle.ViewJrnlTitle_dt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{jrnlController.destroyAndView}" value="#{bundle.ViewJrnlDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewJrnlEditLink}"/>
+                <br />
+                <h:commandLink action="#{jrnlController.prepareCreate}" value="#{bundle.ViewJrnlCreateLink}" />
+                <br />
+                <h:commandLink action="#{jrnlController.prepareList}" value="#{bundle.ViewJrnlShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewJrnlIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
